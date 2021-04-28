@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home1/eperic70/public_html/epericia
+    - /usr/local/bin/composer install
+    - /bin/cp -R * $DEPLOYPATH
