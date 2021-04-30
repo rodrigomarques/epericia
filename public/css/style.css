@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
+*{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+body {
+    background: linear-gradient(45deg,#0b5fce, #4ae22c);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div h1 {
+    font-family: 'Libre Baskerville', serif;
+    text-shadow: 0 0 0.2em rgb(241, 255, 119), 0 0 0.2em rgb(90, 235, 23), 0 0 0.2em rgb(24, 157, 209);
+    color: white;
+    font-weight: 200;
+    position: absolute;
+    top: 2rem;
+    left: 2.5rem;
+    
+}
+
+
+main.container {
+    background-color: white;
+    min-width: 400px;
+    min-height:50vh;
+    padding: 2rem;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+
+}
+
+
+main.containerSenha {
+    background-color: white;
+    min-width: 400px;
+    min-height:40vh;
+    padding: 2rem;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+main h2 {
+    font-weight: 600;
+    font-size: 1.8rem;
+    padding: 0.5rem;
+    color: #2a78dd;
+    margin-bottom: 2rem;
+    position: relative;
+    text-align: center;
+    text-shadow: 0 0 0.2em rgb(241, 255, 119), 0 0 0.2em rgb(90, 235, 23), 0 0 0.2em rgb(24, 157, 209);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.campoPreenchimento {
+    position: relative;
+}
+
+.campoPreenchimento label {
+    color: royalblue;
+    
+}
+
+.campoPreenchimento label i {
+    padding: 0.5rem;
+}
+
+.campoPreenchimento input {
+    width: 100%;
+    color: rgba(0, 0, 0, 0.5);
+    outline: none;
+    font-size: 1rem;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: rgba(192, 192, 192, 0.384);
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2)
+    
+}
+
+.campoPreenchimento input::placeholder{
+    color: rgba(57, 148, 16, 0.815);
+}
+
+.campoPreenchimento input:focus {
+    background-color: #33e01033;
+}
+
+
+#submit {
+    margin-top: 2rem;
+    padding: 0.4rem;
+    width: 100%;
+    background: linear-gradient(to right ,#2fd40e, #2ca8e2);
+    cursor: pointer;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    border-radius: 5px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+    outline: none;
+}      
+
+#submit:focus {
+    background: linear-gradient(to left ,#2fd40ead, #2ca8e2af);
+    color:rgba(20, 57, 158, 0.664);
+    font-weight: 700;
+
+}
+
+#submit:hover {
+    background: linear-gradient(to left ,#2fd40e, #2ca8e2);
+    text-shadow: 0 0 0.2em rgba(8, 122, 252, 0.842), 0 0 0.2em rgb(90, 235, 23), 0 0 0.2em rgb(8, 45, 59);
+}
+
+
+section {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#lembrar {
+    color: royalblue;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    text-align: left;
+}
+
+
+#recuperarSenha {
+    color: rgba(16, 148, 104, 0.815);
+    padding: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+#recuperarSenha a{
+    color:royalblue;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#recuperarSenha a:hover{
+    text-shadow: 0 0 0.2em rgb(241, 255, 119), 0 0 0.2em rgb(90, 235, 23), 0 0 0.2em rgb(24, 157, 209);    
+}
+
+#recuperarSenha a:focus{
+    color: #4ae22c;
+    text-shadow: 0 0 0.2em rgb(241, 255, 119), 0 0 0.2em rgb(90, 235, 23), 0 0 0.2em rgb(24, 157, 209);    
+}
+
+#voltarLogin {
+    color: royalblue;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+#voltarLogin a{
+    text-decoration: none;
+    color:royalblue;
+    font-weight: 600;
+}
+
+#voltarLogin a:hover{
+    text-shadow: 0 0 0.2em rgb(241, 255, 119), 0 0 0.2em rgb(90, 235, 23), 0 0 0.2em rgb(24, 157, 209);    
+}
+
+#voltarLogin a:focus{
+    color: #4ae22c;
+    text-shadow: 0 0 0.2em rgb(241, 255, 119), 0 0 0.2em rgb(90, 235, 23), 0 0 0.2em rgb(24, 157, 209);    
+}

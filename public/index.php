@@ -1,8 +1,5 @@
 <?php
-
-echo "OK";
-exit;
-
+//https://medium.com/@ridbay/how-to-deploy-your-github-repositories-to-cpanel-the-easier-way-16ec6e6cc7ee
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
