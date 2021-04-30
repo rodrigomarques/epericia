@@ -22,7 +22,6 @@ body {
 
 div h1 {
     font-family: 'Libre Baskerville', serif;
-    text-shadow: 0 0 0.2em rgb(241, 255, 119), 0 0 0.2em rgb(90, 235, 23), 0 0 0.2em rgb(24, 157, 209);
     color: white;
     font-weight: 200;
     position: absolute;

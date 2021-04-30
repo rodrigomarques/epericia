@@ -10,7 +10,7 @@
 </head>
 <body>
     <div>
-        <h1>e-perícia</h1>
+        <h1>Sistema e-perícia</h1>
     </div>
     <main class="containerSenha">
         <h2>Redefinir Senha</h2>
