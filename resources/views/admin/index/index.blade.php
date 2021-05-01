@@ -98,7 +98,7 @@
                         <div class="card card-hover">
                             <div class="box bg-cyan text-center">
                                 <h1 class="font-light text-white"><i class="mdi mdi-view-dashboard"></i></h1>
-                                <h6 class="text-white">My Dashboard</h6>
+                                <h6 class="text-white">My Dashboard2</h6>
                             </div>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                         <div class="card card-hover">
                             <div class="box bg-success text-center">
                                 <h1 class="font-light text-white"><i class="mdi mdi-chart-areaspline"></i></h1>
-                                <h6 class="text-white">My Charts</h6>
+                                <h6 class="text-white">My Charts2</h6>
                             </div>
                         </div>
                     </div>
