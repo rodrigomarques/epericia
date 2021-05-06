@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTablePerfil extends Migration
+class CreateTableTag extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateTablePerfil extends Migration
      */
     public function up()
     {
-        Schema::create('table_perfil', function (Blueprint $table) {
-            $table->id();
+        Schema::create('tag', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string("descricao");
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateTablePerfil extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_perfil');
+        Schema::dropIfExists('tag');
     }
 }
