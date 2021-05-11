@@ -73,6 +73,16 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="pt-4">
                         <li class="sidebar-item"> 
+                            <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.tipo_pericia.index') }}">
+                                    <i class="mdi mdi-file-document-box"></i><span>Tipo de Perícia</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item"> 
+                            <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.tipo_documento.index') }}">
+                                    <i class="mdi mdi-file-document-box"></i><span>Documentos Exigidos </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item"> 
                             <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.tipo_documento.index') }}">
                                     <i class="mdi mdi-file-document-box"></i><span>Tipo de Documento </span>
                             </a>
