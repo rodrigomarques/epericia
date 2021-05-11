@@ -5,6 +5,7 @@
     <div class="col-12">
         <div class="card">
             <form class="form-horizontal" method="post">
+                <input type="hidden" name="id"  value="{{ $obj->id }}" />
                 <div class="card-body">
                     <h4 class="card-title">Tipo de Documento</h4>
                     <div class="form-group row">
@@ -12,18 +13,18 @@
                             class="col-sm-3 text-end control-label col-form-label">Tipo</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="tipo" name="tipo"
-                                placeholder="Tipo do Documento">
+                                placeholder="Tipo do Documento" value="{{ $obj->tipo }}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="tag"
                             class="col-sm-3 text-end control-label col-form-label">Tag</label>
                         <div class="col-sm-9">
-                        <select class="select2 form-select shadow-none" style="width: 100%">
-                            <option>Select</option>
+                        <select class="select2 form-select shadow-none" name="tag" style="width: 100%">
+                            <option value="">Select</option>
                             @if(isset($listaTag) && count($listaTag) > 0)
                                 @foreach($listaTag as $tag)
-                                    <option value="{{ $tag->id }}">{{ $tag->descricao }}</option>
+                                    <option value="{{ $tag->id }}" @if($tag->id == $obj->tag_id) selected @endif>{{ $tag->descricao }}</option>
                                 @endforeach
                             @endif
                         </select>
@@ -47,22 +48,31 @@
             </form>
         </div>
 
+        @if(isset($lista) && count($lista) > 0)
         <div class="card">
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Descrição</th>
+                        <th scope="col">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($lista as $elem)
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
+                        <th scope="row">{{ $elem->id }}</th>
+                        <td>{{ $elem->tipo }}</td>
+                        <td>
+                            <a href="{{ route('admin.tipo_documento.edit', [ 'id' => $elem->id ]) }}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                            <a href="{{ route('admin.tipo_documento.delete', [ 'id' => $elem->id ]) }}" class="btn btn-danger text-white"><i class="mdi mdi-delete"></i></a>
+                        </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
+        @endif 
     </div>
 
     <script src="{{ asset('matrix/assets/libs/quill/dist/quill.min.js') }}"></script>
@@ -75,6 +85,9 @@
             let html = quill.root.innerHTML
             document.getElementById("quill-html").value = html
         })
+
+        quill.root.innerHTML = "{!! $obj->texto !!}"
+        document.getElementById("quill-html").value = "{!! $obj->texto !!}"
 
     </script>
 @endsection

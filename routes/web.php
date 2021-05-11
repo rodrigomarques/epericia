@@ -18,16 +18,24 @@ Route::prefix('admin')->name("admin.")->group(function () {
 
     Route::prefix('tipo/documento')->name("tipo_documento.")->group(function () {
         Route::match(['get', 'post'], '/', [TipoDocumentoController::class, 'index'])->name("index");
+        Route::match(['get', 'post'], '/{id}', [TipoDocumentoController::class, 'index'])->name("edit");
+        Route::match(['get', 'post'], '/delete/{id}', [TipoDocumentoController::class, 'delete'])->name("delete");
     });
 
     Route::prefix('objeto')->name("objeto.")->group(function () {
         Route::match(['get', 'post'], '/', [ObjetoController::class, 'index'])->name("index");
+        Route::match(['get', 'post'], '/{id}', [ObjetoController::class, 'index'])->name("edit");
+        Route::match(['get', 'post'], '/delete/{id}', [ObjetoController::class, 'delete'])->name("delete");
     });
     Route::prefix('fases')->name("fases.")->group(function () {
         Route::match(['get', 'post'], '/', [FaseController::class, 'index'])->name("index");
+        Route::match(['get', 'post'], '/{id}', [FaseController::class, 'index'])->name("edit");
+        Route::match(['get', 'post'], '/delete/{id}', [FaseController::class, 'delete'])->name("delete");
     });
     Route::prefix('tag')->name("tag.")->group(function () {
         Route::match(['get', 'post'], '/', [TagController::class, 'index'])->name("index");
+        Route::match(['get', 'post'], '/{id}', [TagController::class, 'index'])->name("edit");
+        Route::match(['get', 'post'], '/delete/{id}', [TagController::class, 'delete'])->name("delete");
     });
 });
 
