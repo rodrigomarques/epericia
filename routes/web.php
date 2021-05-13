@@ -8,6 +8,8 @@ use App\Http\Controllers\FaseController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TipoDocumentoController;
 use App\Http\Controllers\TipoPericiaController;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\DocumentoExigidoController;
 
 Route::match(['get', 'post'], '/', [LoginController::class, 'index'])->name("home");
 Route::match(['get', 'post'], '/esqueceu-senha', [LoginController::class, 'esqueceuSenha'])->name("esqueceu-senha");
@@ -16,6 +18,12 @@ Route::match(['get', 'post'], '/esqueceu-senha', [LoginController::class, 'esque
 Route::prefix('admin')->name("admin.")->group(function () {
     
     Route::match(['get', 'post'], '/', [AdminController::class, 'index'])->name("home");
+
+    Route::prefix('documento/exigido')->name("documento_exigido.")->group(function () {
+        Route::match(['get', 'post'], '/', [DocumentoExigidoController::class, 'index'])->name("index");
+        Route::match(['get', 'post'], '/{id}', [DocumentoExigidoController::class, 'index'])->name("edit");
+        Route::match(['get', 'post'], '/delete/{id}', [DocumentoExigidoController::class, 'delete'])->name("delete");
+    });
 
     Route::prefix('tipo/documento')->name("tipo_documento.")->group(function () {
         Route::match(['get', 'post'], '/', [TipoDocumentoController::class, 'index'])->name("index");
@@ -34,15 +42,22 @@ Route::prefix('admin')->name("admin.")->group(function () {
         Route::match(['get', 'post'], '/{id}', [ObjetoController::class, 'index'])->name("edit");
         Route::match(['get', 'post'], '/delete/{id}', [ObjetoController::class, 'delete'])->name("delete");
     });
+
     Route::prefix('fases')->name("fases.")->group(function () {
         Route::match(['get', 'post'], '/', [FaseController::class, 'index'])->name("index");
         Route::match(['get', 'post'], '/{id}', [FaseController::class, 'index'])->name("edit");
         Route::match(['get', 'post'], '/delete/{id}', [FaseController::class, 'delete'])->name("delete");
     });
+
     Route::prefix('tag')->name("tag.")->group(function () {
         Route::match(['get', 'post'], '/', [TagController::class, 'index'])->name("index");
         Route::match(['get', 'post'], '/{id}', [TagController::class, 'index'])->name("edit");
         Route::match(['get', 'post'], '/delete/{id}', [TagController::class, 'delete'])->name("delete");
+    });
+
+    Route::prefix('usuario')->name("usuario.")->group(function () {
+        Route::match(['get', 'post'], '/', [UsuarioController::class, 'index'])->name("index");
+        Route::match(['get', 'post'], '/buscar', [UsuarioController::class, 'buscar'])->name("buscar");
     });
 });
 

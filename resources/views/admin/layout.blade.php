@@ -72,13 +72,25 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="pt-4">
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
+                                href="#" aria-expanded="false"><i class="fas fa-user"></i><span
+                                    class="hide-menu">Usuários </span></a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item"><a href="{{ route('admin.usuario.index')}}" class="sidebar-link"><i
+                                            class="fas fa-user-plus"></i><span class="hide-menu"> Novo
+                                        </span></a></li>
+                                <li class="sidebar-item"><a href="{{ route('admin.usuario.buscar')}}" class="sidebar-link"><i
+                                            class="fas fa-users"></i><span class="hide-menu"> Buscar
+                                        </span></a></li>
+                            </ul>
+                        </li>
                         <li class="sidebar-item"> 
                             <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.tipo_pericia.index') }}">
                                     <i class="mdi mdi-file-document-box"></i><span>Tipo de Perícia</span>
                             </a>
                         </li>
                         <li class="sidebar-item"> 
-                            <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.tipo_documento.index') }}">
+                            <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.documento_exigido.index') }}">
                                     <i class="mdi mdi-file-document-box"></i><span>Documentos Exigidos </span>
                             </a>
                         </li>
@@ -101,18 +113,6 @@
                             <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.objeto.index') }}">
                                     <i class="mdi mdi-buffer"></i><span>Objetos </span>
                             </a>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
-                                href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span
-                                    class="hide-menu">Forms </span></a>
-                            <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="form-basic.html" class="sidebar-link"><i
-                                            class="mdi mdi-note-outline"></i><span class="hide-menu"> Form Basic
-                                        </span></a></li>
-                                <li class="sidebar-item"><a href="form-wizard.html" class="sidebar-link"><i
-                                            class="mdi mdi-note-plus"></i><span class="hide-menu"> Form Wizard
-                                        </span></a></li>
-                            </ul>
                         </li>
                     </ul>
                 </nav>
