@@ -42,8 +42,13 @@
                         <label for="perfil"
                             class="col-sm-3 text-end control-label col-form-label">Perfil</label>
                         <div class="col-sm-9">
-                            <select class="form-control" id="email" name="email">
+                            <select class="form-control" id="email" name="perfil">
                                 <option value=""></option>
+                                @if(isset($listaPerfil) && count($listaPerfil) > 0)
+                                    @foreach($listaPerfil as $elem)
+                                        <option value="{{ $elem->id }}">{{ $elem->nome }}</option>
+                                    @endforeach
+                                @endif 
                             </select>
                         </div>
                     </div>

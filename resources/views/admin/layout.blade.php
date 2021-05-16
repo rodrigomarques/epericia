@@ -82,6 +82,9 @@
                                 <li class="sidebar-item"><a href="{{ route('admin.usuario.buscar')}}" class="sidebar-link"><i
                                             class="fas fa-users"></i><span class="hide-menu"> Buscar
                                         </span></a></li>
+                                <li class="sidebar-item"><a href="{{ route('admin.usuario.perfil')}}" class="sidebar-link"><i
+                                            class="mdi mdi-format-list-bulleted-type"></i><span class="hide-menu"> Perfil
+                                        </span></a></li>
                             </ul>
                         </li>
                         <li class="sidebar-item"> 
