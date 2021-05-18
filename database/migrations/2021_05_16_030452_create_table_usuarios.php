@@ -17,8 +17,9 @@ class CreateTableUsuarios extends Migration
             $table->bigIncrements('id');
             $table->string("nome");
             $table->string("login");
-            $table->string("senha");
+            $table->string("password");
             $table->string("email");
+            $table->integer("status");
             $table->bigInteger('perfil_id')->unsigned();
 
             $table->foreign('perfil_id')

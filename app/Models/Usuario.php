@@ -11,7 +11,7 @@ class Usuario extends RModel
     protected $table = "usuarios";
     public $timestamps = true;
     public $incrementing = true;
-    protected $fillable = ['nome', 'login', 'senha', 'email', 'perfil'];
+    protected $fillable = ['nome', 'login', 'password', 'email', 'status', 'perfil_id'];
 
     protected $rules = [
         
@@ -20,4 +20,8 @@ class Usuario extends RModel
     protected $messages = [
         
     ];
+
+    public function perfil(){
+        return $this->belongsTo(Perfil::class, "perfil_id");
+    }
 }

@@ -57,10 +57,13 @@ Route::prefix('admin')->name("admin.")->group(function () {
 
     Route::prefix('usuario')->name("usuario.")->group(function () {
         Route::match(['get', 'post'], '/', [UsuarioController::class, 'index'])->name("index");
+        Route::match(['get', 'post'], '/edit/{id}', [UsuarioController::class, 'index'])->name("edit");
         Route::match(['get', 'post'], '/buscar', [UsuarioController::class, 'buscar'])->name("buscar");
+        Route::match(['get', 'post'], '/delete/{id}', [UsuarioController::class, 'delete'])->name("delete");
         Route::match(['get', 'post'], '/perfil', [UsuarioController::class, 'perfil'])->name("perfil");
         Route::match(['get', 'post'], '/{id}/perfil', [UsuarioController::class, 'perfil'])->name("perfil.edit");
         Route::match(['get', 'post'], '/{id}/perfil/delete', [UsuarioController::class, 'perfilDelete'])->name("perfil.delete");
+        Route::match(['get', 'post'], '/{id}/perfil/access', [UsuarioController::class, 'access'])->name("perfil.access");
     });
 });
 
