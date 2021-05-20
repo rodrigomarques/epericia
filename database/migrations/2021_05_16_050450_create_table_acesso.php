@@ -14,15 +14,15 @@ class CreateTableAcesso extends Migration
     public function up()
     {
         Schema::create('acesso', function (Blueprint $table) {
-            $table->bigInteger('usuario_id')->unsigned();
+            $table->bigInteger('url_id')->unsigned();
             $table->bigInteger('perfil_id')->unsigned();
-
-            $table->foreign('usuario_id')
-                ->references('id')->on('usuarios')
-                ->onDelete('cascade');
 
             $table->foreign('perfil_id')
                 ->references('id')->on('perfil')
+                ->onDelete('cascade');
+
+            $table->foreign('url_id')
+                ->references('id')->on('url')
                 ->onDelete('cascade');
         });
     }

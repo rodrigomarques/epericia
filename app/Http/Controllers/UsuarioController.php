@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Perfil;
 use App\Models\Usuario;
+use App\Models\Url;
 class UsuarioController extends Controller
 {
     public function index($id = 0, Request $req){
@@ -149,5 +150,19 @@ class UsuarioController extends Controller
         }
 
         return redirect()->route('admin.usuario.perfil');
+    }
+
+    public function access(Request $req){
+        $data = [];
+        $lista = Url::where("status", 1)->orderBy("group", "asc")->get();
+
+        $listaUrl = [];
+        foreach($lista as $url){
+            $itemAtual = isset($listaUrl[$url->group])?$listaUrl[$url->group]:[];
+            $listaUrl[$url->group] = array_merge($itemAtual, [$url]);
+        }
+
+        $data["listaUrl"] = $listaUrl;
+        return view("admin/usuario/acesso", $data);
     }
 }

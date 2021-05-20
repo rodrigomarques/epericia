@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Acesso extends RModel
+class Url extends RModel
 {
     use HasFactory;
-    protected $table = "acesso";
+    protected $table = "url";
     public $timestamps = false;
-    public $incrementing = false;
-    protected $fillable = ['url_id', 'perfil_id'];
+    public $incrementing = TRUE;
+    protected $fillable = ['titulo', 'rota', 'group', 'status'];
 
     protected $rules = [
         
