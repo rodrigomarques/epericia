@@ -12,12 +12,14 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\DocumentoExigidoController;
 
 Route::match(['get', 'post'], '/', [LoginController::class, 'index'])->name("home");
+Route::match(['get', 'post'], '/login', [LoginController::class, 'index'])->name("login");
 Route::match(['get', 'post'], '/esqueceu-senha', [LoginController::class, 'esqueceuSenha'])->name("esqueceu-senha");
 
 
-Route::prefix('admin')->name("admin.")->group(function () {
+Route::middleware(['auth'])->prefix('admin')->name("admin.")->group(function () {
     
     Route::match(['get', 'post'], '/', [AdminController::class, 'index'])->name("home");
+    Route::match(['get', 'post'], '/sair', [AdminController::class, 'sair'])->name("sair");
 
     Route::prefix('documento/exigido')->name("documento_exigido.")->group(function () {
         Route::match(['get', 'post'], '/', [DocumentoExigidoController::class, 'index'])->name("index");

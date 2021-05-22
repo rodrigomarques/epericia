@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Perfil;
 use App\Models\Usuario;
 use App\Models\Url;
+use App\Models\Acesso;
 class UsuarioController extends Controller
 {
     public function index($id = 0, Request $req){
@@ -152,17 +153,46 @@ class UsuarioController extends Controller
         return redirect()->route('admin.usuario.perfil');
     }
 
-    public function access(Request $req){
+    public function access($idperfil = 0, Request $req){
         $data = [];
         $lista = Url::where("status", 1)->orderBy("group", "asc")->get();
+        $listaAcesso = Acesso::where("perfil_id", $idperfil)->get(['url_id']);
 
+        $urlsSelecionadas = array_map(function ($value){
+            return $value["url_id"];
+        }, $listaAcesso->toArray());
+        
         $listaUrl = [];
         foreach($lista as $url){
             $itemAtual = isset($listaUrl[$url->group])?$listaUrl[$url->group]:[];
             $listaUrl[$url->group] = array_merge($itemAtual, [$url]);
         }
 
+        if($req->isMethod("POST")){
+            try{
+                $acesso = $req->input("acesso", []);
+
+                \DB::beginTransaction();
+                
+                \DB::delete('delete from acesso where perfil_id = ?', [$idperfil]);
+
+                foreach($acesso as $url){
+                    \DB::insert('insert into acesso values(?,?)', [$url, $idperfil]);
+                }
+
+                \DB::commit();
+                $req->session()->flash('success', 'Acesso salvo com sucesso');
+            }catch(\Exception $e){
+                \DB::rollBack();
+                \Log::error("ERROR", [ $e->getMessage()]);
+                $req->session()->flash('error', 'Acesso não salvo');
+            }
+            return redirect()->route('admin.usuario.perfil.access', ['id' => $idperfil]);
+        }
+
+        
         $data["listaUrl"] = $listaUrl;
+        $data["urlSelecionada"] = $urlsSelecionadas;
         return view("admin/usuario/acesso", $data);
     }
 }

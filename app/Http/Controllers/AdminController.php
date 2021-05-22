@@ -11,4 +11,8 @@ class AdminController extends Controller
 
         return view("admin/index/index", $data);
     }
+
+    public function sair() {
+        return redirect()->route('home');
+    }
 }
