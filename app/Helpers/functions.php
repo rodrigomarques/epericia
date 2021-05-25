@@ -122,3 +122,12 @@ function getRotaTitle($index = ""){
 
     return isset($elemento[$index])?$elemento[$index]:"";
 }
+
+function checkRole($rota = ""){
+    $user = auth()->user();
+    if($user == null)
+        return false;
+
+    $rotaPerfil = session('rotas', []);
+    return in_array($rota, $rotaPerfil);
+}

@@ -40,8 +40,12 @@
                         <th scope="row">{{ $elem->id }}</th>
                         <td>{{ $elem->descricao }}</td>
                         <td>
+                            @if(checkRole('admin.fases.edit'))
                             <a href="{{ route('admin.fases.edit', [ 'id' => $elem->id ]) }}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                            @endif
+                            @if(checkRole('admin.fases.delete'))
                             <a href="{{ route('admin.fases.delete', [ 'id' => $elem->id ]) }}" class="btn btn-danger text-white"><i class="mdi mdi-delete"></i></a>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

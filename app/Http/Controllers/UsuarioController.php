@@ -182,6 +182,19 @@ class UsuarioController extends Controller
 
                 \DB::commit();
                 $req->session()->flash('success', 'Acesso salvo com sucesso');
+                
+                $user = \Auth::user();
+                $dbRotas = Acesso::join("url", "url.id", "=", "acesso.url_id")
+                    ->where("url.status", 1)
+                    ->where("acesso.perfil_id", $user->perfil_id)
+                    ->get(['rota'])
+                    ->toArray();
+
+                $listaRotas = array_map(function($value){
+                    return $value["rota"];
+                }, $dbRotas);
+                
+                $req->session()->put('rotas', $listaRotas);
             }catch(\Exception $e){
                 \DB::rollBack();
                 \Log::error("ERROR", [ $e->getMessage()]);

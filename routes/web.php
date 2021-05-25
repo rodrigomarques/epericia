@@ -16,8 +16,9 @@ Route::match(['get', 'post'], '/login', [LoginController::class, 'index'])->name
 Route::match(['get', 'post'], '/esqueceu-senha', [LoginController::class, 'esqueceuSenha'])->name("esqueceu-senha");
 
 
-Route::middleware(['auth'])->prefix('admin')->name("admin.")->group(function () {
+Route::middleware(['auth', 'validate.access'])->prefix('admin')->name("admin.")->group(function () {
     
+    Route::match(['get', 'post'], '/naoautorizado', [AdminController::class, 'naoautorizado'])->name("naoautorizado");
     Route::match(['get', 'post'], '/', [AdminController::class, 'index'])->name("home");
     Route::match(['get', 'post'], '/sair', [AdminController::class, 'sair'])->name("sair");
 

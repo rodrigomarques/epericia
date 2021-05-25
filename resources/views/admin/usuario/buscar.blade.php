@@ -60,8 +60,12 @@
                                 <td scope="row">{{ $elem->perfil->nome ?? '' }}</td>
                                 <td scope="row">{{ $elem->email }}</td>
                                 <td>
+                                    @if(checkRole('admin.usuario.edit'))
                                     <a href="{{ route('admin.usuario.edit', [ 'id' => $elem->id ]) }}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                    @endif
+                                    @if(checkRole('admin.usuario.delete'))
                                     <a href="{{ route('admin.usuario.delete', [ 'id' => $elem->id ]) }}" class="btn btn-danger text-white"><i class="mdi mdi-delete"></i></a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

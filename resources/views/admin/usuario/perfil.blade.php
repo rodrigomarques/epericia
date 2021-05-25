@@ -38,9 +38,15 @@
                         <th scope="row">{{ $elem->id }}</th>
                         <td>{{ $elem->nome }}</td>
                         <td>
+                            @if(checkRole('admin.usuario.perfil.edit'))
                             <a href="{{ route('admin.usuario.perfil.edit', [ 'id' => $elem->id ]) }}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                            @endif
+                            @if(checkRole('admin.usuario.perfil.delete'))
                             <a href="{{ route('admin.usuario.perfil.delete', [ 'id' => $elem->id ]) }}" class="btn btn-danger text-white"><i class="mdi mdi-delete"></i></a>
+                            @endif
+                            @if(checkRole('admin.usuario.perfil.access'))
                             <a href="{{ route('admin.usuario.perfil.access', [ 'id' => $elem->id ]) }}" class="btn btn-primary text-white"><i class="mdi mdi-animation"></i></a>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

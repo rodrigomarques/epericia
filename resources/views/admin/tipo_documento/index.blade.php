@@ -64,8 +64,12 @@
                         <th scope="row">{{ $elem->id }}</th>
                         <td>{{ $elem->tipo }}</td>
                         <td>
+                            @if(checkRole('admin.tipo_documento.edit'))
                             <a href="{{ route('admin.tipo_documento.edit', [ 'id' => $elem->id ]) }}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                            @endif
+                            @if(checkRole('admin.tipo_documento.delete'))
                             <a href="{{ route('admin.tipo_documento.delete', [ 'id' => $elem->id ]) }}" class="btn btn-danger text-white"><i class="mdi mdi-delete"></i></a>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

@@ -61,50 +61,70 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="pt-4">
+                        @if(checkRole('admin.usuario.index') || checkRole('admin.usuario.buscar') || checkRole('admin.usuario.perfil'))
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
                                 href="#" aria-expanded="false"><i class="fas fa-user"></i><span
                                     class="hide-menu">Usuários </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
+                                @if(checkRole('admin.usuario.index'))
                                 <li class="sidebar-item"><a href="{{ route('admin.usuario.index')}}" class="sidebar-link"><i
                                             class="fas fa-user-plus"></i><span class="hide-menu"> Novo
                                         </span></a></li>
+                                @endif
+                                @if(checkRole('admin.usuario.buscar'))
                                 <li class="sidebar-item"><a href="{{ route('admin.usuario.buscar')}}" class="sidebar-link"><i
                                             class="fas fa-users"></i><span class="hide-menu"> Buscar
                                         </span></a></li>
-                                <li class="sidebar-item"><a href="{{ route('admin.usuario.perfil')}}" class="sidebar-link"><i
+                                @endif
+                                @if(checkRole('admin.usuario.perfil'))
+                                    <li class="sidebar-item"><a href="{{ route('admin.usuario.perfil')}}" class="sidebar-link"><i
                                             class="mdi mdi-format-list-bulleted-type"></i><span class="hide-menu"> Perfil
                                         </span></a></li>
+                                @endif
                             </ul>
                         </li>
+                        @endif
                         <li class="sidebar-item"> 
+                            @if(checkRole('admin.tipo_pericia.index'))
                             <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.tipo_pericia.index') }}">
                                     <i class="mdi mdi-file-document-box"></i><span>Tipo de Perícia</span>
                             </a>
+                            @endif
                         </li>
                         <li class="sidebar-item"> 
+                            @if(checkRole('admin.documento_exigido.index'))
                             <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.documento_exigido.index') }}">
                                     <i class="mdi mdi-file-document-box"></i><span>Documentos Exigidos </span>
                             </a>
+                            @endif
                         </li>
                         <li class="sidebar-item"> 
+                            @if(checkRole('admin.tipo_documento.index'))
                             <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.tipo_documento.index') }}">
                                     <i class="mdi mdi-file-document-box"></i><span>Tipo de Documento </span>
                             </a>
+                            @endif
                         </li>
                         <li class="sidebar-item"> 
+                            @if(checkRole('admin.tag.index'))
                             <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.tag.index') }}">
                                     <i class="mdi mdi-tag"></i><span>Tag </span>
                             </a>
+                            @endif
                         </li>
                         <li class="sidebar-item"> 
+                            @if(checkRole('admin.fases.index'))
                             <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.fases.index') }}">
                                     <i class="mdi mdi-debug-step-over"></i><span>Fases </span>
                             </a>
+                            @endif
                         </li>
                         <li class="sidebar-item"> 
+                            @if(checkRole('admin.objeto.index'))
                             <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.objeto.index') }}">
                                     <i class="mdi mdi-buffer"></i><span>Objetos </span>
                             </a>
+                            @endif
                         </li>
                     </ul>
                 </nav>

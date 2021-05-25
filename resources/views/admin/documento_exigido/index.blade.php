@@ -40,8 +40,12 @@
                         <th scope="row">{{ $elem->id }}</th>
                         <td>{{ $elem->documento }}</td>
                         <td>
+                            @if(checkRole('admin.documento_exigido.edit'))
                             <a href="{{ route('admin.documento_exigido.edit', [ 'id' => $elem->id ]) }}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                            @endif
+                            @if(checkRole('admin.documento_exigido.delete'))
                             <a href="{{ route('admin.documento_exigido.delete', [ 'id' => $elem->id ]) }}" class="btn btn-danger text-white"><i class="mdi mdi-delete"></i></a>
+                            @endif
                         </td>
                     </tr>
                     @endforeach
