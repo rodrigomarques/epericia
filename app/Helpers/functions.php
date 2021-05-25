@@ -97,7 +97,7 @@ function verDate(){
     return $dt->format("d") . " de " . $mes . " de " . $dt->format("Y");
 }
 
-function fn($value, $decimals = 2, $real = true){
+function format($value, $decimals = 2, $real = true){
     return (($real)?"R$ " : "") . number_format($value, $decimals,",","");
 }
 
