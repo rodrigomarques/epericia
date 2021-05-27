@@ -14,6 +14,7 @@ use App\Http\Controllers\DocumentoExigidoController;
 Route::match(['get', 'post'], '/', [LoginController::class, 'index'])->name("home");
 Route::match(['get', 'post'], '/login', [LoginController::class, 'index'])->name("login");
 Route::match(['get', 'post'], '/esqueceu-senha', [LoginController::class, 'esqueceuSenha'])->name("esqueceu-senha");
+Route::match(['get', 'post'], '/new-password', [LoginController::class, 'newPassword'])->name("new-password");
 
 
 Route::middleware(['auth', 'validate.access'])->prefix('admin')->name("admin.")->group(function () {
