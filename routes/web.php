@@ -10,6 +10,8 @@ use App\Http\Controllers\TipoDocumentoController;
 use App\Http\Controllers\TipoPericiaController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\DocumentoExigidoController;
+use App\Http\Controllers\ProcessoController;
+
 
 Route::match(['get', 'post'], '/', [LoginController::class, 'index'])->name("home");
 Route::match(['get', 'post'], '/login', [LoginController::class, 'index'])->name("login");
@@ -18,7 +20,7 @@ Route::match(['get', 'post'], '/new-password', [LoginController::class, 'newPass
 
 
 Route::middleware(['auth', 'validate.access'])->prefix('admin')->name("admin.")->group(function () {
-    
+
     Route::match(['get', 'post'], '/naoautorizado', [AdminController::class, 'naoautorizado'])->name("naoautorizado");
     Route::match(['get', 'post'], '/', [AdminController::class, 'index'])->name("home");
     Route::match(['get', 'post'], '/sair', [AdminController::class, 'sair'])->name("sair");
@@ -68,6 +70,12 @@ Route::middleware(['auth', 'validate.access'])->prefix('admin')->name("admin.")-
         Route::match(['get', 'post'], '/{id}/perfil', [UsuarioController::class, 'perfil'])->name("perfil.edit");
         Route::match(['get', 'post'], '/{id}/perfil/delete', [UsuarioController::class, 'perfilDelete'])->name("perfil.delete");
         Route::match(['get', 'post'], '/{id}/perfil/access', [UsuarioController::class, 'access'])->name("perfil.access");
+    });
+
+    Route::prefix('processo')->name("processo.")->group(function () {
+        Route::match(['get', 'post'], '/', [ProcessoController::class, 'index'])->name("index");
+        Route::match(['get', 'post'], '/buscar', [ProcessoController::class, 'buscar'])->name("buscar");
+
     });
 });
 

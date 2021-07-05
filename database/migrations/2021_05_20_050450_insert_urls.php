@@ -50,6 +50,11 @@ class InsertUrls extends Migration
             \DB::statement("INSERT INTO url VALUES(null, 'Tela para Excluir Perfil', 'admin.usuario.perfil.delete', 'perfil', 1)");
             \DB::statement("INSERT INTO url VALUES(null, 'Tela para Controlar Acesso', 'admin.usuario.perfil.access', 'perfil', 1)");
 
+            /*
+            \DB::statement("INSERT INTO url VALUES(null, 'Tela Adicionar Processos', 'admin.processo.index', 'processo', 1)");
+            \DB::statement("INSERT INTO url VALUES(null, 'Tela Buscar Processos', 'admin.processo.buscar', 'processo', 1)");
+
+            */
         }catch(\Exception $e){
 
         }

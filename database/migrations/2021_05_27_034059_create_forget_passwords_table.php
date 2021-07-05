@@ -24,9 +24,9 @@ class CreateForgetPasswordsTable extends Migration
             $table->bigInteger('usuario_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('url_id')
+            /*$table->foreign('url_id')
                 ->references('id')->on('url')
-                ->onDelete('cascade');
+                ->onDelete('cascade');*/
         });
     }
 

@@ -20,7 +20,7 @@
     </style>
 </head>
 <body>
-    
+
 <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
         <header class="topbar" data-navbarbg="skin5">
@@ -38,7 +38,7 @@
                                 class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)"
                                 data-sidebartype="mini-sidebar"><i class="mdi mdi-menu font-24"></i></a></li>
                     </ul>
-                    
+
                     <ul class="navbar-nav float-end ">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -48,7 +48,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('admin.sair') }}"><i
                                         class="fa fa-power-off me-1 ms-1"></i> Sair</a>
-                                
+
                             </ul>
                         </li>
                     </ul>
@@ -61,6 +61,26 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="pt-4">
+                        @if(checkRole('admin.processo.index'))
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
+                                href="#" aria-expanded="false"><i class="fas fa-archive"></i><span
+                                    class="hide-menu">Processos </span></a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                @if(checkRole('admin.processo.index'))
+                                <li class="sidebar-item"><a href="{{ route('admin.processo.index')}}" class="sidebar-link"><i
+                                            class="fas fa-plus"></i><span class="hide-menu"> Novo
+                                        </span></a></li>
+                                @endif
+
+                                @if(checkRole('admin.processo.buscar'))
+                                <li class="sidebar-item"><a href="{{ route('admin.processo.buscar')}}" class="sidebar-link"><i
+                                            class="fas fa-find"></i><span class="hide-menu"> Buscar
+                                        </span></a></li>
+                                @endif
+                            </ul>
+                        </li>
+                        @endif
+
                         @if(checkRole('admin.usuario.index') || checkRole('admin.usuario.buscar') || checkRole('admin.usuario.perfil'))
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
                                 href="#" aria-expanded="false"><i class="fas fa-user"></i><span
@@ -84,42 +104,42 @@
                             </ul>
                         </li>
                         @endif
-                        <li class="sidebar-item"> 
+                        <li class="sidebar-item">
                             @if(checkRole('admin.tipo_pericia.index'))
                             <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.tipo_pericia.index') }}">
                                     <i class="mdi mdi-file-document-box"></i><span>Tipo de Perícia</span>
                             </a>
                             @endif
                         </li>
-                        <li class="sidebar-item"> 
+                        <li class="sidebar-item">
                             @if(checkRole('admin.documento_exigido.index'))
                             <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.documento_exigido.index') }}">
                                     <i class="mdi mdi-file-document-box"></i><span>Documentos Exigidos </span>
                             </a>
                             @endif
                         </li>
-                        <li class="sidebar-item"> 
+                        <li class="sidebar-item">
                             @if(checkRole('admin.tipo_documento.index'))
                             <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.tipo_documento.index') }}">
                                     <i class="mdi mdi-file-document-box"></i><span>Tipo de Documento </span>
                             </a>
                             @endif
                         </li>
-                        <li class="sidebar-item"> 
+                        <li class="sidebar-item">
                             @if(checkRole('admin.tag.index'))
                             <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.tag.index') }}">
                                     <i class="mdi mdi-tag"></i><span>Tag </span>
                             </a>
                             @endif
                         </li>
-                        <li class="sidebar-item"> 
+                        <li class="sidebar-item">
                             @if(checkRole('admin.fases.index'))
                             <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.fases.index') }}">
                                     <i class="mdi mdi-debug-step-over"></i><span>Fases </span>
                             </a>
                             @endif
                         </li>
-                        <li class="sidebar-item"> 
+                        <li class="sidebar-item">
                             @if(checkRole('admin.objeto.index'))
                             <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.objeto.index') }}">
                                     <i class="mdi mdi-buffer"></i><span>Objetos </span>
@@ -154,7 +174,7 @@
             </footer>
         </div>
     </div>
-    
+
     <script src="{{ asset('matrix/assets/libs/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('matrix/js/jquery.ui.touch-punch-improved.js') }}"></script>
     <script src="{{ asset('matrix/js/jquery-ui.min.js') }}"></script>
