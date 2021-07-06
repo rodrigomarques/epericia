@@ -43,7 +43,7 @@ class ProcessoController extends Controller
                     $citacao = \Carbon\Carbon::createFromFormat('d/m/Y', $dtcitacao);
                     $processo->citacao = $citacao->format("Y-m-d");
                 }
-
+                $processo->status = "ATV";
                 $processo->save();
 
                 $vAutor = $req->input("autor", []);
@@ -83,10 +83,44 @@ class ProcessoController extends Controller
 
     public function buscar(Request $req){
         $data = [];
+        $data["n_processo"] = "";
+        $queryProcesso = Processo::where("status", "ATV");
 
-        $data["lista"] = Processo::all();
+        if ($req->isMethod("POST")) {
+            $numProcesso = $req->input("n_processo", "");
+
+            $queryProcesso = $queryProcesso->where("num_processo", "like", "%" . $numProcesso . "%");
+            $data["n_processo"] = $numProcesso;
+        }
+
+        $data["lista"] = $queryProcesso->orderBy("created_at", "desc")->limit(100)->get();
 
         return view("admin/processo/buscar", $data);
+    }
 
+    public function delete(Request $req){
+        try {
+            $obj = Processo::find($id);
+            $obj->status = "DEL";
+            $obj->save();
+            $req->session()->flash('success', 'Processo deletado com sucesso');
+        } catch (\Exception $e) {
+            \Log::error("ERROR", [$e->getMessage()]);
+            $req->session()->flash('error', 'Processo não deletado');
+        }
+
+        return redirect()->route('admin.processo.buscar');
+
+    }
+
+    public function pericia(Request $req, $id = 0, $processo = ""){
+        $processo = Processo::where("num_processo", $processo)
+                        ->where("status", "ATV")
+                        ->where("id", $id)
+                        ->first();
+        if($processo == null){
+            $req->session()->flash('error', 'Processo não encontrado');
+            return redirect()->route('admin.processo.buscar');
+        }
     }
 }

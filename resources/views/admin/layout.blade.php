@@ -74,7 +74,7 @@
 
                                 @if(checkRole('admin.processo.buscar'))
                                 <li class="sidebar-item"><a href="{{ route('admin.processo.buscar')}}" class="sidebar-link"><i
-                                            class="fas fa-find"></i><span class="hide-menu"> Buscar
+                                            class="fas fa-search"></i><span class="hide-menu"> Buscar
                                         </span></a></li>
                                 @endif
                             </ul>

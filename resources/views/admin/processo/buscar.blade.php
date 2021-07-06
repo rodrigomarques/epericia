@@ -11,7 +11,7 @@
                             class="col-sm-3 text-end control-label col-form-label">Número do Processo</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="n_processo" name="n_processo"
-                                placeholder="Número do Processo" value="">
+                                placeholder="Número do Processo" value="{{ $n_processo }}">
                         </div>
                     </div>
                     <div class="col-4">
@@ -62,7 +62,13 @@
                                     @endphp
                                 </td>
                                 <td>
+                                @if(checkRole('admin.processo.pericia'))
+                                    <a href="{{ route('admin.processo.pericia', [ 'id' => $elem->id, 'processo' => $elem->num_processo ]) }}" class="btn btn-primary text-white"><i class="mdi mdi-book-open"></i></a>
+                                @endif
 
+                                @if(checkRole('admin.processo.delete'))
+                                    <a href="{{ route('admin.processo.delete', [ 'id' => $elem->id ]) }}" class="btn btn-danger text-white"><i class="mdi mdi-delete"></i></a>
+                                @endif
                                 </td>
                             </tr>
                             @endforeach

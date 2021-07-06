@@ -75,6 +75,9 @@ Route::middleware(['auth', 'validate.access'])->prefix('admin')->name("admin.")-
     Route::prefix('processo')->name("processo.")->group(function () {
         Route::match(['get', 'post'], '/', [ProcessoController::class, 'index'])->name("index");
         Route::match(['get', 'post'], '/buscar', [ProcessoController::class, 'buscar'])->name("buscar");
+        Route::match(['get', 'post'], '/{id}/excluir', [ProcessoController::class, 'delete'])->name("delete");
+        Route::match(['get', 'post'], '/{id}/{processo}/pericia', [ProcessoController::class, 'pericia'])->name("pericia");
+
 
     });
 });

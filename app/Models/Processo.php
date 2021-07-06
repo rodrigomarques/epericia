@@ -11,7 +11,7 @@ class Processo extends RModel
     public $timestamps = true;
     public $incrementing = true;
     protected $fillable = ['num_processo', 'origem', 'justica_gratuita', 'estado_processo', 'objeto_id', 'local'
-        , 'cidade_processo', 'vara', 'peticao_inicial', 'contestacao', 'resumo', 'ajuizamento', 'citacao'];
+        , 'cidade_processo', 'vara', 'peticao_inicial', 'contestacao', 'resumo', 'ajuizamento', 'citacao', 'status'];
 
     protected $rules = [
 

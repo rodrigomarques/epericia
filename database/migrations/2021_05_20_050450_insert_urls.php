@@ -53,6 +53,8 @@ class InsertUrls extends Migration
             /*
             \DB::statement("INSERT INTO url VALUES(null, 'Tela Adicionar Processos', 'admin.processo.index', 'processo', 1)");
             \DB::statement("INSERT INTO url VALUES(null, 'Tela Buscar Processos', 'admin.processo.buscar', 'processo', 1)");
+            \DB::statement("INSERT INTO url VALUES(null, 'Tela Deletar Processos', 'admin.processo.delete', 'processo', 1)");
+            \DB::statement("INSERT INTO url VALUES(null, 'Tela Gerenciar Perícia', 'admin.processo.pericia', 'processo', 1)");
 
             */
         }catch(\Exception $e){

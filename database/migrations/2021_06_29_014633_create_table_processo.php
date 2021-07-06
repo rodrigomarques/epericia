@@ -34,6 +34,7 @@ class CreateTableProcesso extends Migration
             $table->datetime("citacao")->nullable();
 
             $table->bigInteger('objeto_id')->nullable()->unsigned();
+            $table->string("status")->nullable();
 
             $table->foreign('objeto_id')
                 ->references('id')->on('objetos');
