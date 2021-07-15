@@ -6,7 +6,8 @@ use App\Models\Objeto;
 use App\Models\Processo;
 use App\Models\Autor;
 use App\Models\Reu;
-
+use App\Models\Local;
+use App\Models\Vara;
 
 use Illuminate\Http\Request;
 
@@ -17,6 +18,9 @@ class ProcessoController extends Controller
         $data = [];
         $data["lista"] = [];
         $data["listaObj"] = Objeto::all();
+        $data["listaVara"] = Vara::where("status", 1)->get();
+        $data["listaLocal"] = Local::where("status", 1)->get();
+
 
         if ($req->isMethod("POST")) {
             try {

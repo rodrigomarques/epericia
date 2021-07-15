@@ -11,7 +11,8 @@ use App\Http\Controllers\TipoPericiaController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\DocumentoExigidoController;
 use App\Http\Controllers\ProcessoController;
-
+use App\Http\Controllers\LocalController;
+use App\Http\Controllers\VaraController;
 
 Route::match(['get', 'post'], '/', [LoginController::class, 'index'])->name("home");
 Route::match(['get', 'post'], '/login', [LoginController::class, 'index'])->name("login");
@@ -77,8 +78,18 @@ Route::middleware(['auth', 'validate.access'])->prefix('admin')->name("admin.")-
         Route::match(['get', 'post'], '/buscar', [ProcessoController::class, 'buscar'])->name("buscar");
         Route::match(['get', 'post'], '/{id}/excluir', [ProcessoController::class, 'delete'])->name("delete");
         Route::match(['get', 'post'], '/{id}/{processo}/pericia', [ProcessoController::class, 'pericia'])->name("pericia");
+    });
 
+    Route::prefix('local')->name("local.")->group(function () {
+        Route::match(['get', 'post'], '/', [LocalController::class, 'index'])->name("index");
+        Route::match(['get', 'post'], '/{id}', [LocalController::class, 'index'])->name("edit");
+        Route::match(['get', 'post'], '/delete/{id}', [LocalController::class, 'delete'])->name("delete");
+    });
 
+    Route::prefix('vara')->name("vara.")->group(function () {
+        Route::match(['get', 'post'], '/', [VaraController::class, 'index'])->name("index");
+        Route::match(['get', 'post'], '/{id}', [VaraController::class, 'index'])->name("edit");
+        Route::match(['get', 'post'], '/delete/{id}', [VaraController::class, 'delete'])->name("delete");
     });
 });
 

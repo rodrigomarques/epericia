@@ -146,6 +146,22 @@
                             </a>
                             @endif
                         </li>
+
+                        <li class="sidebar-item">
+                            @if(checkRole('admin.local.index'))
+                            <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.local.index') }}">
+                                    <i class="mdi mdi-buffer"></i><span>Local </span>
+                            </a>
+                            @endif
+                        </li>
+
+                        <li class="sidebar-item">
+                            @if(checkRole('admin.vara.index'))
+                            <a class="sidebar-link waves-effect waves-dark" href="{{ route('admin.vara.index') }}">
+                                    <i class="mdi mdi-buffer"></i><span>Vara </span>
+                            </a>
+                            @endif
+                        </li>
                     </ul>
                 </nav>
             </div>

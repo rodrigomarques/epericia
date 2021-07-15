@@ -18,13 +18,13 @@ class CreateTableProcesso extends Migration
 
             $table->string("num_processo");
             //$table->string("autor");
-            $table->string("local");
+            $table->integer("local");
             //$table->string("reu");
             $table->string("origem")->nullable();
             $table->string("justica_gratuita")->nullable();
             $table->string("estado_processo")->nullable();
             $table->string("cidade_processo")->nullable();
-            $table->string("vara")->nullable();
+            $table->integer("vara")->nullable();
 
             $table->text("peticao_inicial")->nullable();
             $table->text("contestacao")->nullable();
