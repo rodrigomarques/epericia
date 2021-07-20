@@ -47,17 +47,21 @@
                                 <td scope="row">{{ $elem->objeto->descricao ?? '' }}</td>
                                 <td scope="row">
                                     @php
-                                        $autor = \App\Models\Autor::where("processo_id", $elem->id)->first();
-                                        if($autor){
-                                            echo $autor->nome;
+                                        $autor = \App\Models\Autor::where("processo_id", $elem->id)->get();
+                                        if(count($autor) > 0){
+                                            foreach($autor as $at){
+                                                echo $at->nome . "<br>";
+                                            }
                                         }
                                     @endphp
                                 </td>
                                 <td scope="row">
                                     @php
-                                        $reu = \App\Models\Reu::where("processo_id", $elem->id)->first();
-                                        if($reu){
-                                            echo $reu->nome;
+                                        $reu = \App\Models\Reu::where("processo_id", $elem->id)->get();
+                                        if (count($reu) > 0) {
+                                            foreach ($reu as $r) {
+                                                echo $r->nome . "<br>";
+                                            }
                                         }
                                     @endphp
                                 </td>
