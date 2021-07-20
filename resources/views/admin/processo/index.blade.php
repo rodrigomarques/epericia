@@ -89,19 +89,27 @@
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-6">
-                            <div class="linha_autor">
+                        <div class="form-group col-5">
+                            <div id="linha_autor">
                                 <label for="autor"
                                     class="control-label">Autor</label>
                                     <input type="text" class="form-control autor" id="autor" name="autor[]" placeholder="Nome do Autor" >
                             </div>
+                            <div id="clone_autor"></div>
                         </div>
-                        <div class="form-group col-6">
-                            <div class="linha_autor">
+                        <div class="col-1">
+                            <a href="#" class="btn btn-sm btn-info clicarautor">+</a>
+                        </div>
+                        <div class="form-group col-5">
+                            <div id="linha_reu">
                                 <label for="reu"
                                     class="control-label">Réu</label>
                                     <input type="text" class="form-control reu" id="reu" name="reu[]" placeholder="Nome do Réu" >
                             </div>
+                            <div id="clone_reu"></div>
+                        </div>
+                        <div class="col-1">
+                            <a href="#" class="btn btn-sm btn-info clicarreu">+</a>
                         </div>
                     </div>
 
@@ -161,6 +169,18 @@
         autoclose: true,
         todayHighlight: true,
         format : 'dd/mm/yyyy'
+    })
+
+    document.querySelector(".clicarautor").addEventListener('click', (value) => {
+        let linhaAutor = document.querySelector("#linha_autor")
+        let elementoClone = linhaAutor.cloneNode(true);
+        document.querySelector("#clone_autor").appendChild(elementoClone);
+    })
+
+    document.querySelector(".clicarreu").addEventListener('click', (value) => {
+        let linhaReu = document.querySelector("#linha_reu")
+        let elementoClone = linhaReu.cloneNode(true);
+        document.querySelector("#clone_reu").appendChild(elementoClone);
     })
 
     document.querySelector("#estado_processo").addEventListener('change', (value) => {

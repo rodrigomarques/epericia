@@ -53,26 +53,35 @@ class ProcessoController extends Controller
                 $vAutor = $req->input("autor", []);
                 $vReu = $req->input("reu", []);
 
-                $autor = Autor::where("processo_id", $processo->id)->first();
-                if($autor == null){
-                    $autor = new Autor();
+                if(count($vAutor) > 0){
+                    foreach($vAutor as $at){
+                        if(trim($at) == "") continue;
+                        $autor = Autor::where("processo_id", $processo->id)->where("nome", $at)->first();
+                        if ($autor == null) {
+                            $autor = new Autor();
+                        }
+                        $autor->processo_id = $processo->id;
+                        $autor->nome = $at;
+
+                        $autor->save();
+                    }
                 }
-                $autor->processo_id = $processo->id;
-                $autor->nome = $vAutor[0];
 
-                $autor->save();
+                if(count($vReu) > 0){
+                    foreach($vReu as $pReu){
+                        if(trim($pReu) == "") continue;
+                        $reu = Reu::where("processo_id", $processo->id)->where("nome", $pReu)->first();
+                        if ($reu == null) {
+                            $reu = new Reu();
+                        }
 
-                $reu = Reu::where("processo_id", $processo->id)->first();
-                if($reu == null){
-                    $reu = new Reu();
+                        $reu->processo_id = $processo->id;
+                        $reu->nome = $pReu;
+                        $reu->save();
+                    }
                 }
 
-                $reu->processo_id = $processo->id;
-                $reu->nome = $vReu[0];
-
-                $reu->save();
                 $req->session()->flash('success', 'Processo inserido com sucesso');
-
 
             } catch (\Exception $e) {
                 \Log::error("ERROR", [$e->getMessage()]);
